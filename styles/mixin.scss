@@ -1,0 +1,78 @@
+@import './variables.scss';
+
+// Container
+@mixin container{
+    width: 100%;
+    max-width: 1250px;
+    height: inherit;
+    padding: 0 15px;
+    margin: 0 auto;
+
+    @include xl{
+        max-width: 1140px;
+    }
+    @include lg{
+        max-width: 960px;
+    }
+    @include md{
+        max-width: 720px;
+    }
+    @include sm{
+        max-width: 540px;
+    }
+}
+
+// Heading
+@mixin heading{
+    color: $gray1;
+    margin-bottom: 16px;
+    font-size: 30px;
+    font-weight: 500;
+    font-family: $acmeFont;
+    text-transform: uppercase;
+    @include xs{
+        font-size: 20px;
+    }
+}
+
+@mixin backdrop{
+    background: rgba(0,0,0,.1);
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+// Media query
+@mixin xxl{
+    @media (min-width: 1200px) {
+        @content;
+    }
+}
+@mixin xl{
+    @media (max-width: 1200px) {
+        @content;
+    }
+}
+@mixin lg{
+    @media (max-width: 992px) {
+        @content;
+    }
+}
+@mixin md{
+    @media (max-width: 768px) {
+        @content;
+    }
+}
+@mixin sm{
+    @media (max-width: 576px) {
+        @content;
+    }
+}
+@mixin xs{
+    @media (max-width: 480px) {
+        @content;
+    }
+}

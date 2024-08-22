@@ -1,0 +1,149 @@
+@import '../../../styles/variables.scss';
+@import '../../../styles/mixin.scss';
+
+.container{
+    
+    padding: 10px 0px;
+    
+    .topContent{
+        @include container;
+        margin-bottom: 50px;
+        .heading{
+            @include heading;
+        }
+        .reasonCards{
+            display: flex;
+            margin-bottom: 20px;
+            // width: 460px;
+            .reasonCard{
+                padding: 20px;
+                transition: all .5s ease-in-out;
+                > h3{
+                    color: $orange;
+                    font-size: 18px;
+                    font-weight: 600;
+                    margin-bottom: 20px;
+                }
+
+                >  p{
+                    
+                    color: $gray2;
+                    font-weight: 400;
+                    font-size: 13.5px;
+                    line-height: 170%;
+                }
+                > li {
+                    list-style: none; /* Remove default bullet point */
+                    padding-left: 20px;
+                    background-image: url('../../../public/imgs/tag (1).png');  /* Path to your custom image */
+                    background-repeat: no-repeat;  /* Prevent image from repeating */
+                    background-position: 0 45%;  /* Adjust the position as needed */
+                    
+                background-size: 15px 11px;
+                   
+                  }
+
+                &:nth-child(2){
+                    border-left: 2px solid $light;
+                    border-right: 2px solid $light;
+                }
+                
+                &:hover{
+                    box-shadow: 0 5px 15px rgba(0,0,0,.1);
+                    transform: translateY(-5px);
+                }
+            }
+        }
+    }
+
+    .content{
+        padding: 25px 10px;
+        box-shadow:inset 0 -1px 2px rgba(0,0,0,.05);
+        background: #fdfdfd;
+        .list{
+            @include container;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            .item{
+                flex: 1;
+                padding: 50px 30px;
+                border-radius: 10px;
+                list-style: none;
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                background: #f8f8f8;
+                border: 2px solid rgb(216, 210, 195);
+                transition: all 0.3s ease;
+                > h2{
+                    font-size: 60px;
+                    flex-direction: 900;
+                    color: $black;
+                    font-weight: 900;
+                    font-family: var(--font-fira);
+                }
+                > h3{
+                    font-size: 60px;
+                    font-family: var(--font-fira);
+                    font-weight: 900;
+                }
+                > p{
+                    font-size: 14px;
+                    color: $gray;
+                }
+            }
+            .item:hover{
+                box-shadow: 0 5px 5px $orange;
+                transform: translateY(-5px);
+            }
+        }
+    }
+
+    @include lg{
+        .content .list{
+            // background: red;
+            .item{
+                padding: 25px 20px;
+                > h2, h3{
+                    font-size: 35px;
+                }
+                > p{
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+    @include md{
+        .content .list{
+            .item{
+                flex-direction: column;
+            }
+        }
+    }
+
+    @include sm{
+        gap: 0;
+        .topContent {
+            margin-bottom: 0;
+            .reasonCards{
+                flex-direction: column;
+                .reasonCard:nth-child(2){
+                    border-left: none;
+                    border-right: none;
+                }
+            }
+        }
+
+        .content {
+            padding-top: 0;
+            .list{
+                flex-direction: column;
+                .item{
+                    flex-direction: row;
+                }
+            }
+        }
+    }
+}

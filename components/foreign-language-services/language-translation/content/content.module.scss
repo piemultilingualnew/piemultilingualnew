@@ -1,0 +1,159 @@
+@import '../../../../styles/variables.scss';
+@import '../../../../styles/mixin.scss';
+
+@mixin pageContent{
+    width: 800px;
+    h1, h2, h3, h4, h5, h6{
+        color: $skyBlue;
+        font-family: $acmeFont;
+        text-transform: uppercase;
+        // padding: 15px 0;
+        font-weight: 500;
+        // font-size: 22px;
+    }
+    a{
+        color: $orange;
+        // font-weight: 600
+    }
+    p{
+        line-height: 25px;
+        margin: 0 0 10px;
+        color: #333;
+        font-size: 14px
+    }
+}
+@media (max-width: 968px) {
+    .pageContent {
+        width: 700px;
+    }
+
+   
+}
+
+
+
+.container{
+    @include container;
+    padding: 15px 0;
+    display: flex;
+    .left{
+        width: 100%;
+        padding: 15px;
+        .pageContent{
+            @include pageContent;
+        }
+    }
+    // .right{
+    //     width: 33.33%;
+    //     padding: 15px;
+    //     border-left: 1px solid $lightGray;
+
+    //     .formContainer{
+    //         width: 319px;
+    //         height: fit-content;
+    //         background: $orange;
+    //         color: $white;
+    //         text-align: center;
+    //         border: 1px solid $lightGray;
+    //         border-radius: 5px;
+    //         box-shadow: 5px 7px 0px $lightGray;
+    //         .formHeading{
+    //             padding: 11px 0;
+    //             font-size: 22px;
+    //             letter-spacing: 0;
+    //             font-weight: 400;
+    //             font-family: $robotoMonoFont;
+    //             span{
+    //                 font-size: 23px;
+    //                 font-weight: 400;
+    //                 font-family: $acmeFont;
+    //             }
+    //         }    
+            
+    //         .formBrief{
+    //             font-size: 14px;
+    //             padding-bottom: 5px;
+    //         }
+            
+    //         .form{
+    //             width: 100%;
+    //             height: fit-content;
+    //             background: $white;
+    //             padding: 10px;
+    //             display: flex;
+    //             flex-direction: column;
+    //             gap: 10px;
+    //             font-size: 13px;
+    //             .input{
+    //                 padding: 10px 12px;
+    //                 width: 100%;
+    //                 border: 1px solid $orange;
+    //                 border-radius: 3px;
+    //                 &::-webkit-outer-spin-button,
+    //                 &::-webkit-inner-spin-button {
+    //                     -webkit-appearance: none;
+    //                     margin: 0;
+    //                 }
+    //             }
+
+    //             .span{
+    //                 display: flex;
+    //                 background: $lightGray;
+    //                 border: 1px solid $orange;
+    //                 border-radius: 3px;
+
+    //                 button{
+    //                     padding: 10px 12px;
+    //                 }
+    //                 .input{
+    //                     border: none;
+    //                     border-radius: 0;
+    //                     outline: none;
+    //                     background: $white;
+    //                 }
+
+    //                 &:focus-within{
+    //                     border-color: $black;
+    //                 }
+                    
+    //             }
+
+    //             .textarea{
+    //                 width: 100%;
+    //                 padding: 10px 12px;
+    //                 border: 1px solid $orange;
+    //                 border-radius: 3px;
+    //                 resize: none;
+    //             }
+                
+    //             .button{
+    //                 padding: 5px 10px;
+    //                 color: $orange;
+    //                 font-size: 22px;
+    //                 font-weight: 500;
+    //                 border: 1px solid $orange;
+    //                 border-radius: 3px;
+    //                 &:hover{
+    //                     color: $white;
+    //                     background: $orange;
+    //                 }
+    //             }
+
+    //             .text{
+    //                 color: $black;
+    //                 font-size: 12.5px;
+    //                 text-align: left;
+    //                 a{
+    //                     color: $orange;
+    //                     font-weight: 500;
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+
+    @include lg{
+        flex-direction: column;
+    }
+    
+}

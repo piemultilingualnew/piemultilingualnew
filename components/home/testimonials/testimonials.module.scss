@@ -1,0 +1,146 @@
+@import '../../../styles/variables.scss';
+@import '../../../styles/mixin.scss';
+
+.content{
+    @include container;
+    padding: 10px;
+    display: flex;
+    gap: 30px;
+    .left{
+        flex: 1;
+        width: -moz-317px;
+        width: 317px;
+        max-width: 300px;
+        .heading{
+          @include heading;
+          margin-top: 20px;
+        }
+
+        .brief{
+            color: $gray2;
+            margin-bottom: 30px;
+            font-size: 16px;
+            line-height: 170%;
+        } 
+
+        .div{
+            display: flex;
+            align-items: center;
+            .usersList{
+              display: flex;
+              li{
+                list-style: none;
+                img{
+                    border-radius: 50%;
+                    border: 4px solid #fff;
+                }
+                &:nth-child(2){
+                    position: relative;
+                    left: -15px;
+                }
+                &:nth-child(3){
+                    position: relative;
+                    left: -30px;
+                }
+                &:nth-child(4){
+                    position: relative;
+                    left: -45px;
+                }
+              }
+            }
+            .ratings{
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                left: -30px;
+                >p{
+                  font-size: 13px;
+                  font-weight: 500;
+                  color: $lightGray;
+                }
+            }
+
+        }         
+
+    }
+    .right{
+        flex: 1;
+        max-width: 100%;
+        overflow: hidden;
+        .mySwiper{
+            min-height: 317px;
+            max-height: 348px;
+            padding-bottom: 35px;
+            .swiperSlide{
+                background: #fff;
+                height: 348px;
+                border: 1px solid #efefef;
+                border-radius: 10px;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                .review{
+                    color: $gray2;
+                    font-weight: 400;
+                    font-size: 15px;
+                    line-height: 170%;
+                    height: 345px;
+                    overflow-y: hidden;
+                    margin-bottom: 20px;
+                    opacity: .9;
+
+                    // &::before{
+                    //     content: url('../../../public/icons/doubleQuaote.svg');
+                    //     width: 30px;
+                    //     height: 30px;
+                    //     padding: 0px;
+                    //     display: inline-block;
+                    //     color: var(--color-darkblue);
+                    //     opacity: .1;
+                    // }
+                }
+
+                .name{
+                    font-size: 22px;
+                    font-weight: 400;
+                    font-family: $acmeFont;
+                    color: $gray;
+                }
+                  
+                .role{
+                    font-size: 13.5px;
+                    color: $gray1;
+                    font-weight: 400;
+                    span{
+                        color: $orange;
+                        font-weight: 500;
+                        &::before{
+                            content: '|';
+                            color: $gray2;
+                            margin: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @include lg{
+        gap: 30px;
+    }
+
+    @include md{
+        flex-direction: column;
+        gap: 10px;
+        .left{
+            max-width: 100%;
+        }
+    }
+}
+
+
+
+
+
+
+

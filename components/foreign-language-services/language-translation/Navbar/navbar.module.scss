@@ -1,0 +1,115 @@
+@import '../../../../styles/variables.scss';
+@import '../../../../styles/mixin.scss';
+
+@mixin item {
+    white-space: nowrap;
+    text-align: left;
+    font-size: 12.5px;
+    padding: 10px 0px;
+    color: $gray1;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        color: $skyBlue;
+    }
+}
+
+.wrapper {
+    background: $white;
+    position: sticky;
+    top: 0;
+    //  width: 100%;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.container {
+    @include container;
+    padding: 0;
+    margin-top: px;
+    position: relative;
+    background: $white;
+    width: 1210px;
+    .nav {
+        display: flex;
+        flex-wrap: wrap;
+        border-bottom: 2px solid $skyBlue;
+        background: linear-gradient($white, #43b8c52a);
+        position: relative;
+        // padding: 0px 5px;
+        z-index: 5;
+        // justify-content: space-between;
+        // width: -moz-fit-content;
+        width: 100%;
+
+        .item {
+            @include item;
+        }
+
+        .nav1 {
+            .links {
+                @include container;
+                background: $white;
+                border-radius: 3px;
+                box-shadow: 0 5px 5px rgba(0, 0, 0, .05);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                padding: 5px 7px;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                display: none;
+                .link {
+                    padding-left: 10px;
+                    padding-right: 10px;
+                    padding-top: 8px;
+                    padding-bottom: 8px;
+                    width: 100%;
+                    // width: 25%;
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                    color: $gray;
+                    font-weight: 400;
+                    word-wrap: break-word;
+                    transition: color .4s ease-in-out, box-shadow .3s ease-in-out;
+
+                    &:visited {
+                        background-color: #000;
+                    }
+
+                    &:hover {
+                        color: #fff;
+                        box-shadow: inset 300px 0 0 0 $skyBlue;
+
+                    }
+
+                    &::before {
+                        content: '►';
+                        color: $skyBlue;
+                        font-size: 10px;
+                    }
+
+                    &:hover::before {
+                        color: #fff;
+                        /* Change pseudo-element color to white on hover */
+                    }
+
+                }
+            }
+            &:hover {
+                .links {
+                    display: grid;
+                }
+
+            }
+        }
+
+    }
+    
+
+}

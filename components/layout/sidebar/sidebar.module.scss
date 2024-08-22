@@ -1,0 +1,81 @@
+@import '../../../styles/mixin.scss';
+@import '../../../styles/variables.scss';
+
+.sideButton{
+    margin-right: 10px;
+    background: $orange;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    z-index: 100;
+
+    span{
+        width: 20px;
+        height: 3px;
+        background: $white;
+        border-radius: 1px;
+    }
+}
+
+
+.closeButton{
+    background: $gray;
+}
+
+.sideMenu,
+.closeMenu{
+    width: 400px;
+    height: 100vh;
+    padding-top: 50px;
+    background: $gray;
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    transition: all .5s ease-in-out;
+}
+
+.closeMenu{
+    left: -400px;
+}
+
+.link{
+    padding: 15px 30px;
+    font-size: 13px;
+}
+
+.link br{
+    display: none;
+}
+
+.link:hover{
+    background: var(--color-black);
+}
+
+
+.search{
+    padding: 15px 30px;
+}
+
+.input{
+    width: 100%;
+    padding: 12px;
+    border-radius: 24px;
+    color: $white;
+    border: 1px solid $lightGray;
+}
+
+
+@include md {
+    .sideButton{
+        display: flex;
+    }
+}

@@ -1,0 +1,253 @@
+@import '../../../styles/variables.scss';
+@import '../../../styles/mixin.scss';
+
+.container {
+    background: #fafafa;
+    .content {
+        @include container;
+        padding: 50px 10px;
+        display: flex;
+        justify-content: space-between;
+        gap: 50px;
+
+        .textContainer {
+            flex: 3;
+            padding-top: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            .heading {
+                @include heading;
+                margin-bottom: 40px;
+                font-size: 31px;
+                display: flex;
+                gap: 10px;
+
+                >span {
+                    height: 80px;
+                    // white-space: nowrap;
+                    color: $darkBlue;
+                    display: flex;
+                    position: relative;
+
+                    &::after {
+                        content: '';
+                        width: 100px;
+                        height: 5px;
+                        background: $gray;
+                        border-radius: 10px;
+                        transform: rotate(135deg);
+                        position: absolute;
+                        right: -50px;
+                        top: 0;
+                        bottom: 0;
+                        margin: auto;
+                    }
+
+                    &:nth-child(2) {
+                        align-items: flex-end;
+                        color: $orange;
+
+                        &::after {
+                            display: none;
+                        }
+                    }
+
+                }
+
+            }
+
+            @include xs {
+            
+                >span {
+                    white-space: normal;
+
+                }
+            }
+
+            .description {
+                flex: 1;
+                line-height: 25px;
+                color: $gray2;
+                font-size: 17px;
+                font-weight: 500;
+            }
+        }
+
+        .formContainer {
+            flex: 2;
+            background: #fff;
+            padding: 60px 30px;
+            padding-bottom: 30px;
+            box-shadow: 0px 15px 60px -10px #3379b72c;
+            border-radius: 10px;
+            position: relative;
+
+
+            .formHeading {
+                width: -moz-fit-content;
+                width: fit-content;
+                background: linear-gradient(45deg, $orange, $darkOrange);
+                background-clip: text;
+                color: transparent;
+                font-size: 20px;
+                font-family: $acmeFont;
+                font-weight: 500;
+            }
+
+            .formBrief {
+                font-size: 36px;
+                font-weight: 700;
+                color: $gray1;
+                margin-top: 10px;
+                margin-bottom: 30px;
+            }
+
+            .form {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+
+                >div {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 20px;
+                }
+
+                .input {
+                    width: 100%;
+                    margin-bottom: 15px;
+                    padding: 9px 0;
+                    border: none;
+                    background: transparent;
+                    border-bottom: 2px solid #d6d6d6;
+                    border-radius: 0;
+                    font-size: 15px;
+
+                    &::-webkit-outer-spin-button,
+                    &::-webkit-inner-spin-button {
+                        -webkit-appearance: none;
+                        margin: 0;
+                    }
+                }
+
+                .textarea {
+                    height: 180px;
+                    width: 100%;
+                    margin-bottom: 15px;
+                    padding: 15px 0;
+                    border: none;
+                    background: transparent;
+                    border-bottom: 2px solid #d6d6d6;
+                    border-radius: 0;
+                    font-size: 15px;
+                    font-family: inherit;
+                    outline: none;
+                    resize: none;
+                }
+
+                .span {
+                    display: flex;
+                    align-items: center;
+                    padding: 0;
+                    overflow: hidden;
+
+                    >button {
+                        padding: 9px;
+                        aspect-ratio: 1/1;
+                        background: #d6d6d6;
+                        font: inherit;
+                        color: #0000003b;
+                        font-weight: 400;
+                        border-radius: 10px 10px 0 10px;
+                        border: 1px solid #d6d6d6;
+                        margin-bottom: 15px;
+                    }
+
+                    >input {
+                        padding: 9px;
+                        margin-bottom: 15px;
+                    }
+                }
+
+                .button {
+                    display: inline-block;
+                    font-weight: 600;
+                    text-transform: capitalize;
+                    transition: all 0.35s ease-in-out;
+                    overflow: hidden;
+                    border-radius: 6px;
+                    -webkit-box-shadow: inherit;
+                    box-shadow: inherit;
+                    font-size: 17px;
+                    letter-spacing: 0;
+                    position: relative;
+                    z-index: 1;
+                    color: $white;
+                    border: none;
+                    width: -moz-fit-content;
+                    width: fit-content;
+                    margin: auto;
+                    background: $orange;
+                    padding: 16px 52px;
+                }
+
+                .button:hover {
+                    background: $darkOrange;
+                }
+
+                .text {
+                    margin-top: 30px;
+                    font-size: 13.5px;
+                    color: $gray2;
+                    font-weight: 400;
+
+                    >a {
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+    }
+
+    @include lg {
+        .content {
+            gap: 30px;
+
+            .formContainer {
+                padding: 80px 50px;
+            }
+        }
+    }
+
+    @include md {
+        .content {
+            flex-direction: column;
+        }
+    }
+
+    @include xs {
+        .content {
+            .formContainer {
+                padding: 30px;
+
+                .formHeading {
+                    font-size: 16px;
+                }
+
+                .formBrief {
+                    font-size: 30px;
+                }
+
+                .form {
+                    gap: 15px;
+
+                    >div {
+                        grid-template-columns: 1fr;
+                    }
+                }
+            }
+        }
+    }
+}

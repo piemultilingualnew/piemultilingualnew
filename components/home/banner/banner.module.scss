@@ -1,0 +1,336 @@
+@import '../../../styles/variables.scss';
+@import '../../../styles/mixin.scss';
+
+.container {
+    width: 100%;
+    height: 540px;
+    background: $lightGray;
+    position: relative;
+
+
+    .contentContainer {
+        width: 100%;
+        height: inherit;
+        position: absolute;
+        top: 0;
+
+        .content {
+            @include container;
+            padding: 0 10px;
+            display: flex;
+            align-items: center;
+            position: relative;
+
+            .leftContainer {
+                height: 450px;
+                // padding: 50px 0px 20px 0px;
+                display: flex;
+                flex-direction: column;
+                // justify-content: space-between;
+
+                .box {
+                    width: 568px;
+                    background: #00000080;
+                    -webkit-backdrop-filter: blur(2px);
+                    backdrop-filter: blur(2px);
+                    padding: 1rem .75rem;
+                    border-left: 5px solid $orange;
+                    border-radius: 3px;
+                    padding-bottom: 25px;
+
+                    .whiteText {
+                        color: $white;
+                        padding: 10px 0px 0px 16px;
+                        font-family: $robotoFont;
+                        font-size: 28px;
+                        font-weight: 400;
+                    }
+
+                    .orangeText {
+                        color: #ff6600;
+                        padding: 0px 0px;
+                        margin: 0px 0px 16px;
+                        font-family: $acmeFont;
+                        font-size: 27px;
+                        font-weight: 400;
+                        @media only screen and (max-width: 400px){
+                            font-size: 18px;
+                        }
+                    }
+
+                    .serviceCards {
+                        padding: 0 0px;
+                        display: grid;
+                        grid-template-columns: 220px 220px;
+                        gap: 20px;
+                        .serviceCard {
+                            list-style: none;
+                            width: 220px;
+                            height: 72px;
+                            background: $white;
+                            border-radius: 3px;
+                            overflow: hidden;
+                            display: flex;
+
+                            .serviceIcon {
+                                background: rgb(221, 225, 230);
+                                width: 72px;
+                                height: 72px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+
+                                i::before {
+                                    font-size: 28px;
+                                    color: $orange;
+                                }
+                            }
+
+                            .serviceText {
+                                padding: 12px;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                >h4 {
+                                    color: $orange;
+                                    font-size: 16px;
+                                    font-weight: 400;
+                                }
+
+                                >p {
+                                    color: $gray2;
+                                    font-size: 14px;
+                                    font-weight: 400;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .clientHeading {
+                    color: $white;
+                    font-weight: 500;
+                    font-size: 28px;
+                    font-family: var(--font-fira);
+                }
+
+                .clients {
+                    margin-top: 10px;
+                    display: flex;
+                    width: 100%;
+                    justify-content: space-between;
+                    height: 55px;
+                    gap: 20px;
+                    @media screen and (max-width: 400px) {
+                        gap: 10px;
+                    }
+                    .clientImg {
+                        width: 140px;
+                        height: 55px;
+                        background-color: white;
+                        border-radius: 3px;
+                        border: 2px solid $lightGray;
+                        padding: 5px;
+                        transition: all .2s linear;
+                        cursor: pointer;
+
+                        &:hover {
+                            scale: 1.1;
+                        }
+                    }
+                }
+            }
+
+            .formContainer {
+                width: 319px;
+                height: fit-content;
+                height: auto;
+                background: rgba(0, 0, 0, .5);
+                color: $white;
+                text-align: center;
+                border: 1px solid $lightGray;
+                border-radius: 15px;
+                box-shadow: 0 0 7px $lightGray;
+                position: absolute;
+                right: 10px;
+
+                .formHeading {
+                    padding: 11px 0;
+                    font-size: 22px;
+                    letter-spacing: .5;
+                    font-weight: 400;
+
+                    span {
+                        font-size: 23px;
+                        font-weight: 700;
+                    }
+                }
+
+                .formBrief {
+                    font-size: 14px;
+                    padding-bottom: 5px;
+                }
+
+                .form {
+                    width: 100%;
+                    height: fit-content;
+                    background: $white;
+                    padding: 10px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    font-size: 13px;
+
+                    .input {
+                        padding: 10px 12px;
+                        width: 100%;
+                        border: 1px solid $orange;
+                        border-radius: 3px;
+
+                        &::-webkit-outer-spin-button,
+                        &::-webkit-inner-spin-button {
+                            -webkit-appearance: none;
+                            margin: 0;
+                        }
+                    }
+
+                    .span {
+                        display: flex;
+                        background: $lightGray;
+                        border: 1px solid $orange;
+                        border-radius: 3px;
+
+                        button {
+                            padding: 10px 12px;
+                        }
+
+                        .input {
+                            border: none;
+                            border-radius: 0;
+                            outline: none;
+                            background: $white;
+                        }
+
+                        &:focus-within {
+                            border-color: $black;
+                        }
+
+                    }
+
+                    .textarea {
+                        width: 100%;
+                        padding: 10px 12px;
+                        border: 1px solid $orange;
+                        border-radius: 3px;
+                        resize: none;
+                    }
+
+                    .button {
+                        padding: 5px 10px;
+                        color: $orange;
+                        font-size: 22px;
+                        font-weight: 500;
+                        border: 1px solid $orange;
+                        border-radius: 3px;
+
+                        &:hover {
+                            color: $white;
+                            background: $orange;
+                        }
+                    }
+
+                    .text {
+                        color: $black;
+                        font-size: 11px;
+                        text-align: left;
+
+                        a {
+                            color: $orange;
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    @include lg {
+        .contentContainer {
+            .content {
+                .leftContainer {
+                    .box {
+                        width: 500px;
+                    }
+                }
+            }
+        }
+    }
+
+    @include md {
+        .contentContainer {
+            .content {
+                flex-direction: column;
+
+                .leftContainer {
+                    .box {
+                        width: 100%;
+                        .serviceCards{
+                            grid-template-columns: 150px 150px;
+                            .serviceCard{
+                                width: 150px;
+                            }
+                        }
+                    }
+
+                    .clients {
+                        justify-content: center;
+                        .clientImg{
+                            width: 80px;
+                        }
+                    }
+                }
+
+                .formContainer {
+                    position: static;
+                    width: 100%;
+                    margin-top: 20px;
+                }
+            }
+        }
+    }
+
+    @include sm {
+
+        .contentContainer {
+            flex-direction: column;
+            height: 1000px;
+
+            .content {
+                height: 1000px;
+
+                .leftContainer {
+                    .box {
+                        width: 340px;
+                    }
+
+                    .serviceCards {
+                        grid-template-columns: 1fr;
+                    }
+                }
+
+                .formContainer {
+                    width: 100%;
+                    margin-top: 20px;
+                }
+            }
+        }
+
+    }
+
+}
+@include xs{
+    .container{
+        height: 1000px;
+    }
+}

@@ -1,0 +1,133 @@
+@import '../../../styles/variables.scss';
+@import '../../../styles/mixin.scss';
+
+
+.container{
+    padding: 0px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    &::after{
+        content: '';
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 0;
+    }
+
+    .content{
+        @include container;
+        padding: 0;
+        max-width: 100%;
+        color: #fff;
+        .div{
+            .heading{
+                @include heading;
+                color: #fff;
+                margin-left: 20px;
+            }   
+
+            .left{
+                background-image: url('/imgs/price_bg2.avif');
+                position: relative;
+                background-size: 33% 100%;
+                width: 91%;
+                padding-top: 40px;
+                padding-bottom: 40px;
+                color: white;
+                @media screen and (max-width: 768px) {
+                    width: 100%;
+                }
+            }
+
+            .right{
+                display: flex;
+                z-index: 10;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                pointer-events: none;
+                max-width: 313px;
+                max-height: 313px;
+                @media only screen and (max-width: 768px){
+                    display: none;
+                }
+            }
+
+            .right::before{
+                content: "";
+                display: block;
+                border: 61px solid hsla(0, 1%, 74%, 0.7);
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                opacity: 1;
+                z-index: 2;
+                transition: border 0.5s;
+                
+            }
+
+            .right:hover::before{
+                border: 0;
+            }
+
+            .description{
+                font-size: 16px;
+                line-height: 170%;
+                font-weight: 400;
+                color: #fff;
+                margin-left: 20px;
+            }
+            
+            .btn{
+                white-space: nowrap;
+                width: 150px;
+                height: 45px;
+                font-size: 18px;
+                font-weight: 500;
+                border-radius: 3px;
+                border: 1px solid #333;
+                color: #333;
+                padding: 7px 21px;
+                z-index: 10;
+                text-transform: uppercase;
+                pointer-events: auto;
+            }
+            
+            .btnWrapper{
+                border: 15px solid rgba(254, 215, 170, 0.7);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 195px;
+                height: 195px;
+                z-index: 10;
+                transition: all 0.5s;
+                position: absolute;
+                pointer-events: none;
+            }
+
+            .btn:hover{
+                color: $orange;
+                background: $white;
+                border-color: #ff6600;
+            }
+            
+            .btnWrapper:hover{
+                width: 100%;
+                height: 100%;
+                border-color: transparent;
+                border-left-width: 85px;
+                border-right-width: 85px;
+                border-top-width: 135px;
+                border-bottom-width: 135px;
+            }
+
+            
+
+        }
+    }
+}

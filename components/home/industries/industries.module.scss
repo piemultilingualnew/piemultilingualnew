@@ -1,0 +1,120 @@
+@import '../../../styles/variables.scss';
+@import '../../../styles/mixin.scss';
+
+.content{
+    display: flex;
+    gap: 50px;
+    z-index: 10;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    .left{
+        flex: 4;
+        height: 100%;
+        .heading{
+            @include heading;
+        }
+        
+        .description{
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 170%;
+            color: $gray1;
+        }
+        
+        .list{
+            padding-top: 25px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            background-color: #e8f3fe;
+            width: 75%;
+            margin-bottom: 1%;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .itemWrapper{
+            padding: 7px 0;
+            margin: 0 5px;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(to left, white, #ff6600, white), linear-gradient(to left, white, #ff6600, white);
+            background-size: 100% 1.5px;
+            background-position: bottom 0 left 0;
+            background-repeat: no-repeat;
+        }
+        
+        .item{
+            background: #e8f3fe;
+            padding: 0px 10px;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+        
+        .icon{
+            margin-right: 15px;
+            aspect-ratio: 1/1;
+            height: 22px;
+            width: 22px;
+        }
+        
+        .item p{
+            font-size: 14px !important;
+            font-weight: 400 !important;
+            color: $gray2 !important;
+            display: flex;
+            align-items: center;
+        }
+        
+        .itemWrapper:nth-child(1),
+        .itemWrapper:nth-child(2),
+        .itemWrapper:nth-child(3){
+            padding-top: 0;
+        }
+    }
+    .right{
+        flex: 2;
+        padding-top: 50px;
+        height: 100%;
+        .imgWrapper{
+            height: 100% !important;
+            filter: drop-shadow(0 0 10px rgba(0,0,0,.1));
+            img{
+                width: 100%;
+                height: 100% !important;
+                object-fit: cover !important;
+                border-radius: 7px;
+            }
+        }
+    }
+
+    @include xl{
+        gap: 20px;
+    }
+
+
+    @include md{
+        .right{
+            display: none;
+        }
+    }
+
+    @include sm{
+        .left{
+            .list{
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    }
+
+    @include xs{
+        .left{
+            .list{
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+}

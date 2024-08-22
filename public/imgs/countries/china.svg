@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 1600 1600" width="1280" height="1280" xmlns="http://www.w3.org/2000/svg">
+<path transform="translate(67,300)" d="m0 0h1466v1e3h-1466z" fill="#FE3D00"/>
+<path transform="translate(333,451)" d="m0 0 2 3 22 69 16 51 126 1-5 4-14 10-67 46-14 10h-2l12 36 16 49 11 34-1 2-36-26-19-14-36-26-10-7-4 2-17 12-19 14-54 39-9 6 2-9 20-61 15-47-1-5-22-15-23-16-22-15-32-22v-1h126l3-11 20-64 15-47z" fill="#FFEB3B"/>
+<path transform="translate(582,367)" d="m0 0 2 2 10 32v2h37v2l-24 16-4 3 1 7 9 27v2l-4-2-18-13-7-5-4 1-17 12-9 7h-2l3-11 7-22-1-4-18-12-10-7v-1h38l3-12z" fill="#FFEB3B"/>
+<path transform="translate(716,668)" d="m0 0 2 2 10 31v3h38l-4 4-24 16-1 4 10 31-1 2-19-14-11-7-16 12-11 8h-2l2-10 7-21-1-5-19-13-8-6v-1h37l3-11z" fill="#FFEB3B"/>
+<path transform="translate(583,801)" d="m0 0 2 3 10 32v2h37l-5 4-11 8-12 8 1 7 9 29-5-2-13-10-11-8-4 1-14 10-12 9h-2l3-11 7-22v-3l-12-8-16-11v-1l36-1 10-31z" fill="#FFEB3B"/>
+<path transform="translate(716,501)" d="m0 0 2 2 10 32 1 2 36 1-4 4-24 16 2 9 8 25-1 2-17-12-11-8-4 1-19 14-9 6 3-11 7-22v-4l-19-13-9-6v-1h37l3-12z" fill="#FFEB3B"/>
+</svg>
