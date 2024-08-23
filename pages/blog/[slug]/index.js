@@ -25,13 +25,11 @@ export default function Blogdetails() {
       if (router.asPath) {
         const { fetchBlogDetail } = await import("@/Redux/actions/blogActions");
         let searchurl = router.asPath;
-        console.log("as Path: ", searchurl);
         dispatch(fetchBlogDetail(searchurl));
       }
     };
 
     fetching();
-    console.log("Blog detail: ", blogDetail);
   }, [router.asPath, dispatch]);
 
   if (loadingBlogDetail) {

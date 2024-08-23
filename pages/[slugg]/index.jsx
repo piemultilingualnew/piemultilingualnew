@@ -1,8 +1,11 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import dynamic from "next/dynamic";
+import { resetInner1 } from "@/Redux/features/innner1Slice";
+import { resetInner3 } from "@/Redux/features/inner3Slice";
+import { resetLearning } from "@/Redux/features/learningSlice";
 
 const Banner = dynamic(() => import("@/components/home/banner/Banner"), {
   loading: () => <div className="w-full min-h-screen">Loading</div>,
@@ -184,9 +187,13 @@ const Index = () => {
         let parts = searchurl.split("/");
         parts = parts[1] ? parts[1].replace(/-/g, " ") : "";
 
-        dispatch(fetchInner1Data(searchurl));
-        dispatch(fetchInner3Data(searchurl));
-        dispatch(fetchLearningData(searchurl));
+        dispatch(resetInner1());
+        dispatch(resetInner3());
+        dispatch(resetLearning());
+
+        await Promise.all([dispatch(fetchInner1Data(searchurl))]);
+        await Promise.all([dispatch(fetchInner3Data(searchurl))]);
+        await Promise.all([dispatch(fetchLearningData(searchurl))]);
       }
     };
 
@@ -199,8 +206,7 @@ const Index = () => {
         <div className="main-container h-[300px] flex relative bg-white justify-center z-20 items-center">
           <span className="loading loading-ring loading-lg text-[#F60]"></span>
         </div>
-        <div className="sticky h-[520px] w-[100%] z-0 bottom-[0px]">
-        </div>
+        <div className="sticky h-[520px] w-[100%] z-0 bottom-[0px]"></div>
       </div>
     );
   }

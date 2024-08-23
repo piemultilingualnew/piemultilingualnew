@@ -3,6 +3,9 @@ import dynamic from "next/dynamic";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { resetHire } from "@/Redux/features/hireSlice";
+import { resetInner2 } from "@/Redux/features/inner2Slice";
+import { resetInner3 } from "@/Redux/features/inner3Slice";
 
 const Footer = dynamic(() => import("@/components/Footer/page"), {
   loading: () => () => <div className="w-full min-h-screen">Loading</div>,
@@ -64,9 +67,13 @@ const Index = () => {
         let parts = url.split("/");
         parts = parts[1] ? parts[1].replace(/-/g, " ") : "";
         let urltwo = url + "/";
-        dispatch(fetchInner2Data(url));
-        dispatch(fetchInner3Data(url));
-        dispatch(fetchHireData(urltwo));
+        dispatch(resetInner3());
+        dispatch(resetInner2());
+        dispatch(resetHire());
+
+        await Promise.all([dispatch(fetchInner2Data(url))]);
+        await Promise.all([dispatch(fetchInner3Data(url))]);
+        await Promise.all([dispatch(fetchHireData(urltwo))]);
       }
     };
     fetching();
@@ -78,8 +85,7 @@ const Index = () => {
         <div className="main-container h-[300px] flex relative bg-white justify-center z-20 items-center">
           <span className="loading loading-ring loading-lg text-[#F60]"></span>
         </div>
-        <div className="sticky h-[520px] w-[100%] z-0 bottom-[0px]">
-        </div>
+        <div className="sticky h-[520px] w-[100%] z-0 bottom-[0px]"></div>
       </div>
     );
 

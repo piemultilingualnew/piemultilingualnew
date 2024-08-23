@@ -13,10 +13,10 @@ const initialState = {
 
 // Create slice
 export const inner2Slice = createSlice({
-  name: "inner",
+  name: "inner2",
   initialState,
   reducers: {
-    // Define any additional reducers here if needed
+    resetInner2: () => initialState,
   },
   extraReducers: (builder) => {
     builder
@@ -36,4 +36,4 @@ export const inner2Slice = createSlice({
   },
 });
 
-export const { innner2Data, loadingInner2, errorInner2 } = inner2Slice.actions;
+export const { innner2Data, loadingInner2, errorInner2, resetInner2 } = inner2Slice.actions;

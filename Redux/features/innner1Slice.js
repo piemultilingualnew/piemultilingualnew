@@ -13,7 +13,9 @@ const initialState = {
 export const inner1Slice = createSlice({
   name: "inner1",
   initialState,
-  reducers: {},
+  reducers: {
+    resetInner1: () => initialState,
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchInner1Data.pending, (state) => {
@@ -32,4 +34,4 @@ export const inner1Slice = createSlice({
   },
 });
 
-export const {inner1Data, loadingInner1, errorInner1} = inner1Slice.actions;
+export const {inner1Data, loadingInner1, errorInner1, resetInner1 } = inner1Slice.actions;

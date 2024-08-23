@@ -6,6 +6,5 @@ module.exports = {
   },
   trailingSlash: true,
   compress: true,
-  // output: 'export',
   // reactStrictMode: false,
 };

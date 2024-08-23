@@ -11,7 +11,9 @@ const initialState = {
 export const learningSlice = createSlice({
   name: "learning data",
   initialState,
-  reducers: {},
+  reducers: {
+    resetLearning: () => initialState,
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchLearningData.pending, (state) => {
@@ -29,4 +31,4 @@ export const learningSlice = createSlice({
   },
 });
 
-export const { learningData, loadingLearning, errorLearning } = learningSlice.actions;
+export const { learningData, loadingLearning, errorLearning, resetLearning } = learningSlice.actions;

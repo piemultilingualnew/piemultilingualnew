@@ -13,7 +13,9 @@ const initialState = {
 export const inner3Slice = createSlice({
   name: "inner3",
   initialState,
-  reducers: {},
+  reducers: {
+    resetInner3: () => initialState,
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchInner3Data.pending, (state) => {
@@ -32,4 +34,4 @@ export const inner3Slice = createSlice({
   },
 });
 
-export const { inner3Data, loadingInner3, errorInner3 } = inner3Slice.actions;
+export const { inner3Data, loadingInner3, errorInner3, resetInner3 } = inner3Slice.actions;

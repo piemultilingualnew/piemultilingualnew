@@ -10,7 +10,9 @@ const initialState = {
 export const hireSlice = createSlice({
   name: "hire",
   initialState,
-  reducers: {},
+  reducers: {
+    resetHire: () => initialState,
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchHireData.pending, (state) => {
@@ -29,4 +31,4 @@ export const hireSlice = createSlice({
   },
 });
 
-export const { hireData, loadingHire, errorHire } = hireSlice.actions;
+export const { hireData, loadingHire, errorHire, resetHire } = hireSlice.actions;

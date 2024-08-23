@@ -29,4 +29,4 @@ export const contactSlice = createSlice({
   },
 });
 
-export const { contactData, loading, error } = contactSlice.actions;
+export const { contactData, loadingContact, errorContact } = contactSlice.actions;
