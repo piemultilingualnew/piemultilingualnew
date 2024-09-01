@@ -1,28 +1,28 @@
 "use client";
 import { useState } from "react";
 
-// const faqData = [
-//   {
-//     question: "How do I apply for a credit card on the marketplace?",
-//     answer: "To apply for a credit card, you need to...",
-//   },
-//   {
-//     question: "How does the credit card marketplace work?",
-//     answer: "The credit card marketplace allows you to compare...",
-//   },
-//   {
-//     question: "How can I improve my credit score?",
-//     answer: "Improving your credit score requires...",
-//   },
-//   {
-//     question: "What skills do I need to work in AI and ML?",
-//     answer: "To work in AI and ML, you should have knowledge of...",
-//   },
-//   {
-//     question: "What skills do I need to work in AI and ML?",
-//     answer: "To work in AI and ML, you should have knowledge of...",
-//   },
-// ];
+const faqData = [
+  {
+    question: "How do I apply for a credit card on the marketplace?",
+    answer: "To apply for a credit card, you need to...",
+  },
+  {
+    question: "How does the credit card marketplace work?",
+    answer: "The credit card marketplace allows you to compare...",
+  },
+  {
+    question: "How can I improve my credit score?",
+    answer: "Improving your credit score requires...",
+  },
+  {
+    question: "What skills do I need to work in AI and ML?",
+    answer: "To work in AI and ML, you should have knowledge of...",
+  },
+  {
+    question: "What skills do I need to work in AI and ML?",
+    answer: "To work in AI and ML, you should have knowledge of...",
+  },
+];
 
 const FAQItem = ({ question, answer, isOpen, onClick }) => {
   return (
@@ -61,7 +61,7 @@ const FAQItem = ({ question, answer, isOpen, onClick }) => {
   );
 };
 
-const FAQ = ({faqData}) => {
+const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
   const handleClick = (index) => {

@@ -1,46 +1,45 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-const Slider = (props) => {
-  const tabs = props.tabs;
+const Slider = () => {
   const [activeTab, setActiveTab] = useState(1);
   const [progress, setProgress] = useState(0);
   const [isRunning, setIsRunning] = useState(true);
 
-  // const tabs = [
-  //   {
-  //     id: 1,
-  //     title: "Market Leader in HFS Horizons CX",
-  //     label: "Market Leader",
-  //     link: "#",
-  //     description:
-  //       "This ranking underscores EXL's dedication to driving transformative CX through our deep domain expertise and AI-led solutions. By focusing on personalized customer experiences, we enhance satisfaction and loyalty while simultaneously reducing operational costs. Our innovative approaches not only streamline customer interactions but also provide actionable insights for continuous improvement. Through strategic ",
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "Healthcare leaders should start building",
-  //     label: "Gen AI Foundation",
-  //     link: "#",
-  //     description:
-  //       "Forrester Opportunity Snapshot reveals that more than 75% of healthcare leaders view implementing generative AI (genAI) as a critical priority for their organizations this year. Embracing genAI is essential for modernizing healthcare operations, optimizing patient outcomes, and streamlining workflows. However, transitioning from trials to full-scale execution poses challenges. It requires a robust strategy, ",
-  //   },
-  //   {
-  //     id: 3,
-  //     title: "Celebrating 25 years of excellence and innovation",
-  //     label: "25 years of service",
-  //     link: "#",
-  //     description:
-  //       "As we mark 25 years of excellence and innovation, we reflect on the key milestones that have shaped our journey. From pioneering new industry standards to expanding our global reach, our commitment to quality and customer satisfaction has been unwavering. This anniversary celebrates not just our past achievements but also our ongoing dedication to innovation. By continually evolving and embracing new ",
-  //   },
-  //   {
-  //     id: 4,
-  //     title: "EXL named a top Leader",
-  //     label: "Leader in AI",
-  //     link: "#",
-  //     description:
-  //       "EXL's recognition as a top Leader in the Everest Group Analytics and Artificial Intelligence (AI) Services Specialists PEAK Matrix® is a testament to our strong industry knowledge and innovative IP portfolio. Our approach integrates advanced analytics, machine learning, and AI to deliver superior outcomes for clients across various sectors. By effectively managing talent and leveraging deep domain expertise, EXL ",
-  //   },
-  // ];
+  const tabs = [
+    {
+      id: 1,
+      title: "Market Leader in HFS Horizons CX",
+      label: "Market Leader",
+      link: "#",
+      description:
+        "This ranking underscores EXL's dedication to driving transformative CX through our deep domain expertise and AI-led solutions. By focusing on personalized customer experiences, we enhance satisfaction and loyalty while simultaneously reducing operational costs. Our innovative approaches not only streamline customer interactions but also provide actionable insights for continuous improvement. Through strategic ",
+    },
+    {
+      id: 2,
+      title: "Healthcare leaders should start building",
+      label: "Gen AI Foundation",
+      link: "#",
+      description:
+        "Forrester Opportunity Snapshot reveals that more than 75% of healthcare leaders view implementing generative AI (genAI) as a critical priority for their organizations this year. Embracing genAI is essential for modernizing healthcare operations, optimizing patient outcomes, and streamlining workflows. However, transitioning from trials to full-scale execution poses challenges. It requires a robust strategy, ",
+    },
+    {
+      id: 3,
+      title: "Celebrating 25 years of excellence and innovation",
+      label: "25 years of service",
+      link: "#",
+      description:
+        "As we mark 25 years of excellence and innovation, we reflect on the key milestones that have shaped our journey. From pioneering new industry standards to expanding our global reach, our commitment to quality and customer satisfaction has been unwavering. This anniversary celebrates not just our past achievements but also our ongoing dedication to innovation. By continually evolving and embracing new ",
+    },
+    {
+      id: 4,
+      title: "EXL named a top Leader",
+      label: "Leader in AI",
+      link: "#",
+      description:
+        "EXL's recognition as a top Leader in the Everest Group Analytics and Artificial Intelligence (AI) Services Specialists PEAK Matrix® is a testament to our strong industry knowledge and innovative IP portfolio. Our approach integrates advanced analytics, machine learning, and AI to deliver superior outcomes for clients across various sectors. By effectively managing talent and leveraging deep domain expertise, EXL ",
+    },
+  ];
 
   const activeTabContent = tabs.find((tab) => tab.id === activeTab);
 

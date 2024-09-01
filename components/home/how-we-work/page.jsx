@@ -1,6 +1,6 @@
 import { YouTubeEmbed } from "@next/third-parties/google";
 
-const HowWeWork = ({data}) => {
+const HowWeWork = () => {
   return (
     <section className="bg-[url('/imgs/workBg.jpg')] bg-cover text-white mt-10">
       <div className="bg-[#0d2543]/85 w-full h-full py-[40px]">
@@ -20,7 +20,7 @@ const HowWeWork = ({data}) => {
                   <h2 className="text-[6rem]">{"]"}</h2>
                 </div>
                 <p className="text-gray-400 md:w-[350px] mt-10 text-center md:text-start px-5 md:px-0 relative right-0 md:right-4">
-                  {data.description}
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa praesentium officia saepe corrupti obcaecati reiciendis, quidem repudiandae at aliquam sint earum, ex vel recusandae perspiciatis? Animi fugiat illo, esse commodi aut quibusdam hic ex.
                 </p>
               </div>
             </div>

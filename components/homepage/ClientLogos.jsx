@@ -62,7 +62,8 @@ const ClientLogos = ({data}) => {
             MOST PROMINENT CUSTOMERS
           </h2>
           <p className="mt-5">
-            {data.content}
+          Our clients are much of the best known and best managed enterprises in the world. From cohesive teams to senior leaders, executive board members & CEOs, we work with clients around the world, in all roles and at all levels. Our esteemed diversified clientele includes substantial government agencies, fortune 500 corporations, and renowned public institutions. Our global expertise and well-defined processes will indeed take your business to the next level.
+          Our clients are much of the best known and best managed enterprises in the world. From cohesive teams to senior leaders, executive board members & CEOs, we work with clients around the world, in all roles and at all levels. Our esteemed diversified.
           </p>
         </div>
       </div>

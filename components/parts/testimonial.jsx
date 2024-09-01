@@ -1,7 +1,28 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-export default function Testimonials(props) {
+export default function Testimonials() {
+  const testimonials = [
+    {
+      name: "Alice Johnson",
+      review: "The team at this company has been absolutely fantastic in helping us streamline our operations. Their attention to detail and customer service is unparalleled. Highly recommended!",
+      role: "Operations Manager",
+      location: "New York, USA"
+    },
+    {
+      name: "Michael Lee",
+      review: "I have worked with several service providers, but this company stands out due to their professionalism and ability to deliver on time. They understood our needs and exceeded our expectations.",
+      role: "Chief Technology Officer",
+      location: "Sydney, Australia"
+    },
+    {
+      name: "Sara Martinez",
+      review: "Their expertise and commitment to quality have significantly impacted our business. The level of support and dedication they offer is rare to find. I would definitely work with them again.",
+      role: "Marketing Director",
+      location: "Toronto, Canada"
+    }
+  ];
+  
   return (
     <div className="w-fit rounded-[15px] overflow-hidden">
       {
@@ -54,7 +75,7 @@ export default function Testimonials(props) {
             rewindWithAnimation={true}
             customTransition="1000ms"
           >
-            {props?.data?.map((item, i) => (
+            {testimonials.map((item, i) => (
               <div
                 className="w-[330px] px-6 py-8 text-black flex flex-col justify-between"
                 key={i}

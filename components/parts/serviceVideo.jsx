@@ -1,7 +1,7 @@
 import { YouTubeEmbed } from "@next/third-parties/google";
 import React from "react";
 
-const BusinessService = ({ data }) => {
+const BusinessService = () => {
   return (
     <div className=" bg-[#236cb9] px-2">
       <div className="flex flex-col lg:flex-row items-center justify-between py-2 lg:pl-8 max-w-[1250px] mx-auto">
@@ -54,7 +54,7 @@ const BusinessService = ({ data }) => {
         <div className="w-full lg:w-[900px] h-[400px]">
           <YouTubeEmbed
             style="min-width:100%; min-height:315px; max-height:400px;"
-            videoid={data.video_link}
+            videoid="12"
             params="rel=0"
           />
         </div>
