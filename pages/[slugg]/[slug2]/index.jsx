@@ -1,14 +1,13 @@
-"use client";
 import dynamic from "next/dynamic";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import { resetHire } from "@/Redux/features/hireSlice";
 import { resetInner2 } from "@/Redux/features/inner2Slice";
 import { resetInner3 } from "@/Redux/features/inner3Slice";
 
 const Footer = dynamic(() => import("@/components/Footer/page"), {
-  loading: () => () => <div className="w-full min-h-screen">Loading</div>,
+  loading: () => <div className="w-full min-h-screen">Loading</div>,
 });
 const Navbar = dynamic(
   () =>
@@ -16,7 +15,7 @@ const Navbar = dynamic(
       "@/components/foreign-language-services/language-translation/Navbar/Navbar"
     ),
   {
-    loading: () => () => <div className="w-full min-h-[200px]">Loading</div>,
+    loading: () => <div className="w-full min-h-[200px]">Loading</div>,
   }
 );
 const Banner = dynamic(
@@ -25,7 +24,7 @@ const Banner = dynamic(
       "@/components/foreign-language-services/language-translation/banner/Banner"
     ),
   {
-    loading: () => () => <div className="w-full min-h-[300px]">Loading</div>,
+    loading: () => <div className="w-full min-h-[300px]">Loading</div>,
   }
 );
 const Section = dynamic(
@@ -34,50 +33,38 @@ const Section = dynamic(
       "@/components/foreign-language-services/language-translation/sections/page"
     ),
   {
-    loading: () => () => <div className="w-full min-h-screen">Loading</div>,
+    loading: () => <div className="w-full min-h-screen">Loading</div>,
   }
 );
-
 const NotFound = dynamic(() => import("@/components/layout/NotFound"), {
-  loading: () => () => <div className="w-full min-h-screen">Loading</div>,
+  loading: () => <div className="w-full min-h-screen">Loading</div>,
 });
 
 const Index = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { hireData, loadingHire, errorHire } = useSelector(
-    (state) => state.hire
-  );
-  const { inner2Data, loadingInner2, errorInner2 } = useSelector(
-    (state) => state.inner2
-  );
+  const { hireData, loadingHire } = useSelector((state) => state.hire);
+  const { inner2Data, loadingInner2 } = useSelector((state) => state.inner2);
   const { inner3Data, loadingInner3, errorInner3 } = useSelector(
     (state) => state.inner3
   );
 
-  useEffect(() => {
-    const fetching = async () => {
-      const { fetchInner2Data } = await import("@/Redux/actions/inner2Actions");
-      const { fetchInner3Data } = await import("@/Redux/actions/inner3Actions");
-      const { fetchHireData } = await import("@/Redux/actions/hireActions");
+  const fetchData = useCallback(async () => {
+    const {fetchInner2Data} = await import("@/Redux/actions/inner2Actions");
 
-      if (router.asPath) {
-        let url = router.asPath;
-        url = url.substring(0, url.length - 1);
-        let parts = url.split("/");
-        parts = parts[1] ? parts[1].replace(/-/g, " ") : "";
-        let urltwo = url + "/";
-        dispatch(resetInner3());
-        dispatch(resetInner2());
-        dispatch(resetHire());
+    let url = router.asPath.slice(0, -1);
+    let parts = url.split("/")[1]?.replace(/-/g, " ") || "";
 
-        await Promise.all([dispatch(fetchInner2Data(url))]);
-        await Promise.all([dispatch(fetchInner3Data(url))]);
-        await Promise.all([dispatch(fetchHireData(urltwo))]);
-      }
-    };
-    fetching();
+    dispatch(resetInner2());
+    dispatch(resetInner3());
+    dispatch(resetHire());
+
+    dispatch(fetchInner2Data(url));
   }, [router.asPath, dispatch]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   if (loadingHire || loadingInner2 || loadingInner3)
     return (
@@ -89,36 +76,28 @@ const Index = () => {
       </div>
     );
 
+  const renderContent = (data) => (
+    <>
+      <Banner data={data} />
+      <Navbar />
+      <div className="main-container flex justify-center items-center">
+        <Section data={data}></Section>
+      </div>
+    </>
+  );
+
   return (
     <div className="">
       {hireData ? (
-        <>
-          <Banner data={hireData} />
-          <Navbar />
-          <div className="main-container   flex justify-center items-center">
-            <Section data={hireData}></Section>
-          </div>
-        </>
+        renderContent(hireData)
       ) : inner2Data ? (
-        <>
-          <Banner data={inner2Data} />
-          <Navbar />
-          <div className="main-container   flex justify-center items-center">
-            <Section data={inner2Data}></Section>
-          </div>
-        </>
+        renderContent(inner2Data)
       ) : inner3Data ? (
-        <>
-          <Banner data={inner3Data} />
-          <Navbar />
-          <div className="main-container   flex justify-center items-center">
-            <Section data={inner3Data}></Section>
-          </div>
-        </>
-      ) : errorInner2 && errorInner3 && errorHire ? (
+        renderContent(inner3Data)
+      ) : errorInner3 === "error" ? (
         <NotFound />
       ) : (
-        <div className="main-container  justify-center items-center">
+        <div className="main-container justify-center items-center">
           <div className="main-container h-[300px] flex relative bg-white justify-center z-20 items-center">
             <span className="loading loading-ring loading-lg text-[#F60]"></span>
           </div>

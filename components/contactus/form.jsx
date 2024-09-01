@@ -1,8 +1,9 @@
 import { useState, useRef } from 'react';
-import { useIpData } from '@/context/ipcontext';
+import { useSelector } from 'react-redux';
 
 export default function Form() {
-    const ipData = useIpData();
+    const {ipInfo} = useSelector((state) => state.ip);
+    const ipData = ipInfo;
     const [namewarn, setNamewarn] = useState(false);
     const [phonewarn, setPhonewarn] = useState(false);
     const [name, setName] = useState('');

@@ -108,13 +108,15 @@ const Header = () => {
   };
   const dispatch = useDispatch();
   const { isVisible } = useSelector((state) => state.edit);
-  const { headerData, statusHeader, errorHeader } = useSelector((state) => state.header);
+  const { headerData, statusHeader, errorHeader } = useSelector(
+    (state) => state.header
+  );
 
   useEffect(() => {
-    const fetching = async() => {
+    const fetching = async () => {
       const { fetchHeaderData } = await import("@/Redux/actions/headerActions");
       dispatch(fetchHeaderData());
-    }
+    };
     fetching();
   }, [dispatch]);
   return (
@@ -124,7 +126,15 @@ const Header = () => {
     >
       <div className={styles.topBar}>
         <div className={styles.left}>
-          <Link href="/">
+          <Link
+            href="/"
+            onClick={() => {
+              if (nowactive != -1) {
+                toggleBooleanAtIndex(nowactive);
+              }
+              setNowactive(-1);
+            }}
+          >
             <Image
               src="/imgs/logo.svg"
               width={280}
@@ -141,6 +151,12 @@ const Header = () => {
             <Link
               href="/multilingual-outsourcing-company-services"
               className={styles.menuLink}
+              onClick={() => {
+                if (nowactive != -1) {
+                  toggleBooleanAtIndex(nowactive);
+                }
+                setNowactive(-1);
+              }}
             >
               <i className="flaticon-gears" /> ALL SERVICES
             </Link>
@@ -168,7 +184,16 @@ const Header = () => {
                   {item.links && (
                     <nav>
                       {item.links.map((link, i) => (
-                        <Link href={link.url} key={i}>
+                        <Link
+                          href={link.url}
+                          key={i}
+                          onClick={() => {
+                            if (nowactive != -1) {
+                              toggleBooleanAtIndex(nowactive);
+                            }
+                            setNowactive(-1);
+                          }}
+                        >
                           {link.text}
                         </Link>
                       ))}
@@ -194,7 +219,15 @@ const Header = () => {
         {headerData != null && headerData != undefined ? (
           <ul className={styles.bottomBarContainer} style={{ padding: 0 }}>
             {bottomLinks[0].icon && (
-              <li className={styles.bottomBarLink}>
+              <li
+                className={styles.bottomBarLink}
+                onClick={() => {
+                  if (nowactive != -1) {
+                    toggleBooleanAtIndex(nowactive);
+                  }
+                  setNowactive(-1);
+                }}
+              >
                 <Link href="/" aria-label="home" className={styles.link}>
                   <i className={`${bottomLinks[0].icon} `} />
                 </Link>

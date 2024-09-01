@@ -1,15 +1,17 @@
 import axios from "axios";
 import qs from "qs";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { fetchInner3Data } from "./inner3Actions";
 
 // Create the async thunk for fetching hire data
 export const fetchHireData = createAsyncThunk(
   "hire/fetchHireData",
-  async (searchurltwo, { rejectWithValue }) => {
+  async (searchurl, { rejectWithValue, dispatch }) => {
+    const searchurltwo = searchurl + "/";
     const query = qs.stringify(
       {
         filters: {
-          $or: [{ page_url: { $eq: searchurltwo } }],
+          $or: [{ current_url: { $eq: searchurltwo } }],
         },
         populate: [
           "Banner",
@@ -37,8 +39,10 @@ export const fetchHireData = createAsyncThunk(
         const hireData = response.data.data[0].attributes;
         return hireData;
       } else {
-        return rejectWithValue("No data found!");
-      }
+        if (!dispatch(fetchInner3Data(searchurl))) {
+          return rejectWithValue("No data found");
+        }
+       }
     } catch (error) {
       return rejectWithValue(error.response.data);
     }

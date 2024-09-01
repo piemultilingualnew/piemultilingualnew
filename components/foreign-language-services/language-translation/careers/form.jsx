@@ -3,7 +3,8 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 
 export default function Careerform() {
-    const { ipData } = useSelector((state) => state.ip);
+    const { ipInfo } = useSelector((state) => state.ip);
+    const ipData = ipInfo;
     const { inner3Data } = useSelector((state) => state.inner3);
     const { inner1Data } = useSelector((state) => state.inner1);
     const apiData = inner1Data;

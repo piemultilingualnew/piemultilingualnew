@@ -55,9 +55,9 @@ const Banner = ({ apiData }) => {
     <>
       <div>
         <Head>
-          <title>{dataa.Title}</title>
-          <meta name="description" content={dataa.Description} />
-          <meta name="keywords" content={dataa.Keywords} />
+          <title>{dataa?.Title}</title>
+          <meta name="description" content={dataa?.Description} />
+          <meta name="keywords" content={dataa?.Keywords} />
         </Head>
       </div>
       <div className={`${styles.container} h-[1000px]`}>

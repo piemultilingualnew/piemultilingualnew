@@ -16,6 +16,7 @@ import { editSlice } from './features/editSlice';
 import { errorSlice } from './features/errorSlice';
 import { headerSlice } from './features/headerSlice';
 import { ipSlice } from './features/ipSlice';
+import { homeSlice } from './features/homeSlice';
 
 
 // Create the Redux store
@@ -38,9 +39,9 @@ const makeStore = () =>
       error: errorSlice.reducer,
       header: headerSlice.reducer,
       ip: ipSlice.reducer,
+      home: homeSlice.reducer,
     },
-    devTools: process.env.NODE_ENV !== 'production', // Enable Redux DevTools in development
+    devTools: process.env.NODE_ENV !== 'production', 
   });
 
-// Create a wrapper to wrap your app with Redux
 export const wrapper = createWrapper(makeStore);

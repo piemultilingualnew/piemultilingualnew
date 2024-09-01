@@ -87,8 +87,8 @@ const Banner = (props) => {
   }, [dataa]);
 
   const banimage =
-    dataa != null && dataa != undefined && dataa.Banner.image.data != null
-      ? process.env.NEXT_PUBLIC_mainurl + dataa.Banner.image.data.attributes.url
+    dataa != null && dataa != undefined && dataa.Banner?.image.data != null
+      ? process.env.NEXT_PUBLIC_mainurl + dataa.Banner?.image.data.attributes.url
       : data?.herobox?.image
       ? process.env.NEXT_PUBLIC_mainurl + data.herobox.image.data.attributes.url
       : "";

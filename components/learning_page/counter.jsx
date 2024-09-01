@@ -12,6 +12,9 @@ export default function Counters(props) {
   const [animatedValues, setAnimatedValues] = useState(
     Array(values.length).fill(0)
   );
+  for (let i = 0; i < nums.length; i++) {
+    nums[i] = Number(nums[i]);
+  }
   const springs = useSprings(
     values.length,
     values.map((val, index) => ({
@@ -46,10 +49,11 @@ export default function Counters(props) {
         >
           <p className="text-[50px] font-roboto font-bold flex justify-center items-center">
             <animated.span>
-              {/* {spring.value.interpolate((val) => val.toFixed(0))} */}
+              {spring.value.interpolate((val) => val.toFixed(0))}
             </animated.span>
             {values[index].heading?.match(/[a-zA-Z]/) || ""}+
           </p>
+
           <p className="text-[18px] font-roboto font-normal">
             {props.data[index] != null ? props.data[index].content : ""}
           </p>

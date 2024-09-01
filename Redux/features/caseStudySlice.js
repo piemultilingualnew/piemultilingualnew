@@ -13,7 +13,9 @@ const initialState = {
 export const caseStudySlice = createSlice({
   name: "caseStudy",
   initialState,
-  reducers: {},
+  reducers: {
+    resetCase: () => initialState,
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCaseStudyData.pending, (state) => {
@@ -31,4 +33,4 @@ export const caseStudySlice = createSlice({
   },
 });
 
-export const { caseData, loadingCase, errorCase } = caseStudySlice.actions;
+export const { caseData, loadingCase, errorCase, resetCase } = caseStudySlice.actions;

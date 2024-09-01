@@ -2,11 +2,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import qs from "qs";
+import { fetchHireData } from "./hireActions";
 
 // Define async thunk
 export const fetchInner2Data = createAsyncThunk(
   "api/fetchInner2Data",
-  async (searchurl, { rejectWithValue }) => {
+  async (searchurl, { rejectWithValue, dispatch }) => {
     const searchurlWithSlash = searchurl + "/";
 
     const query = qs.stringify(
@@ -77,7 +78,11 @@ export const fetchInner2Data = createAsyncThunk(
           api: "inner2",
         };
       }
-      return rejectWithValue("No data found");
+      else {
+        if (!dispatch(fetchHireData(searchurl))) {
+          return rejectWithValue("No data found");
+        }
+      }
     } catch (error) {
       return rejectWithValue(error.response.data);
     }

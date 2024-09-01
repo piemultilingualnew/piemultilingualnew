@@ -30,6 +30,9 @@ export const fetchCaseStudyData = createAsyncThunk(
     const urltop = `${process.env.NEXT_PUBLIC_mainurl}/api/case-studies?${query}`;
 
     try {
+      if (searchurl === "/case-study/[slug") {
+        return null;
+      }
       const response = await axios.get(urltop, {
         headers: { "Content-Type": "application/json" },
       });
@@ -42,6 +45,7 @@ export const fetchCaseStudyData = createAsyncThunk(
           api: "case-study",
         };
       }
+      return rejectWithValue("error");
     } catch (error) {
       return rejectWithValue(error.response.data);
     }

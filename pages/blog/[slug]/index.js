@@ -36,19 +36,17 @@ export default function Blogdetails() {
     return (
       <>
         <div className="main-container justify-center items-center">
-        <div className="main-container h-[300px] flex relative bg-white justify-center z-20 items-center">
-          <span className="loading loading-ring loading-lg text-[#F60]"></span>
+          <div className="main-container h-[300px] flex relative bg-white justify-center z-20 items-center">
+            <span className="loading loading-ring loading-lg text-[#F60]"></span>
+          </div>
+          <div className="sticky h-[520px] w-[100%] z-0 bottom-[0px]"></div>
         </div>
-        <div className="sticky h-[520px] w-[100%] z-0 bottom-[0px]">
-        </div>
-      </div>
       </>
     );
   }
 
   if (errorBlogDetail) {
-    // router.push("/404");
-    return  <>No blog detail found.</>
+    return <NotFound />;
   }
 
   return blogDetail ? (
@@ -64,8 +62,10 @@ export default function Blogdetails() {
         <span className="loading loading-ring loading-lg text-[#F60]"></span>
       </div>
     </div>
-  ) : errorBlogDetail && (
-    <NotFound />
-    // <>Null</>
+  ) : (
+    errorBlogDetail && (
+      <NotFound />
+      // <>Null</>
+    )
   );
 }

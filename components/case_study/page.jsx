@@ -4,7 +4,6 @@ const BlogCards = dynamic(() => import("@/components/case_study/cards"), {
 });
 import Banner from "../foreign-language-services/language-translation/banner/Banner";
 import { useState } from "react";
-import { useBlogData } from "@/context/blogapi";
 import { useSelector } from "react-redux";
 const RightSection = dynamic(
   () =>

@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@next/third-parties": "^14.2.4",
-    "@react-spring/web": "^9.7.4",
+    "@react-spring/web": "^9.0.0",
     "@reduxjs/toolkit": "^2.2.7",
     "axios": "^1.6.0",
     "dom-to-image": "^2.6.0",

@@ -12,6 +12,9 @@ export const hireSlice = createSlice({
   initialState,
   reducers: {
     resetHire: () => initialState,
+    setErrorHire: (state, action) => {
+      state.errorHire = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -31,4 +34,4 @@ export const hireSlice = createSlice({
   },
 });
 
-export const { hireData, loadingHire, errorHire, resetHire } = hireSlice.actions;
+export const { hireData, loadingHire, errorHire, resetHire, setErrorHire } = hireSlice.actions;

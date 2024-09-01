@@ -1,3 +1,4 @@
+"use client";
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -5,15 +6,9 @@ import domtoimage from "dom-to-image";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function RightSection(props) {
-  const { inner1Data } = useSelector(
-    (state) => state.inner1
-  );
-  const { inner3Data } = useSelector(
-    (state) => state.inner3
-  );
-  const { ipInfo } = useSelector(
-    (state) => state.ip
-  );
+  const { inner1Data } = useSelector((state) => state.inner1);
+  const { inner3Data } = useSelector((state) => state.inner3);
+  const { ipInfo } = useSelector((state) => state.ip);
 
   const ipdata = ipInfo;
   const [show, setShow] = useState(false);
@@ -113,14 +108,20 @@ export default function RightSection(props) {
 
   const [gap, setGap] = useState();
   const [gapp, setGapp] = useState();
+
+  const dateTime = new Date();
+  const [dateString, setDateString] = useState("");
+
+  useEffect(() => {
+    setDateString(dateTime.toLocaleString());
+  }, [dateTime]);
+
   useEffect(() => {
     uploadbutton ? setGap(10) : setGap(18);
     uploadbutton ? setGapp(10) : setGap(10);
   }, [gap, gapp, uploadbutton]);
 
-  const dateTime = new Date();
   const tableRef = useRef(null);
-  const dateString = dateTime.toLocaleString();
   const [url, setUrl] = useState("");
   useEffect(() => {
     setUrl(`${window.location.origin}${asPath}`);
@@ -198,7 +199,7 @@ export default function RightSection(props) {
 
   return (
     <div
-      className={`w-[100%] gap-[${gap}px] z-0   justify-between   shadow-lg bg-[#eeeded] rounded-[15px] flex flex-col  items-center   shadow-[#514e4e]   `}
+      className={`w-[100%] gap-[${gap}px] z-0 justify-between shadow-lg bg-[#eeeded] rounded-[15px] flex flex-col items-center shadow-[#514e4e]`}
     >
       <div className=" absolute  h-[800px] left-[-999999999999px] bg-white text-black">
         <div
@@ -247,7 +248,7 @@ export default function RightSection(props) {
                   Name
                 </td>
                 <td style={{ border: "1px solid black", padding: "8px" }}>
-                  {formData.name}
+                  {formData.name || ""}
                 </td>
               </tr>
               <tr>
@@ -261,7 +262,7 @@ export default function RightSection(props) {
                   Email
                 </td>
                 <td style={{ border: "1px solid black", padding: "8px" }}>
-                  {formData.email}
+                  {formData.email || ""}
                 </td>
               </tr>
               <tr>
@@ -275,7 +276,7 @@ export default function RightSection(props) {
                   Phone
                 </td>
                 <td style={{ border: "1px solid black", padding: "8px" }}>
-                  {formData.phone}
+                  {formData?.phone || ""}
                 </td>
               </tr>
               <tr>
@@ -289,7 +290,7 @@ export default function RightSection(props) {
                   Country
                 </td>
                 <td style={{ border: "1px solid black", padding: "8px" }}>
-                  {ipdata != null ? ipdata.country : ""}
+                  {ipdata ? ipdata.country : ""}
                 </td>
               </tr>
               <tr>
@@ -303,7 +304,7 @@ export default function RightSection(props) {
                   IP
                 </td>
                 <td style={{ border: "1px solid black", padding: "8px" }}>
-                  {ipdata != null ? ipdata.ip : ""}
+                  {ipdata ? ipdata.ip : ""}
                 </td>
               </tr>
               <tr>
@@ -317,7 +318,7 @@ export default function RightSection(props) {
                   URL
                 </td>
                 <td style={{ border: "1px solid black", padding: "8px" }}>
-                  {url}
+                  {url || ""}
                 </td>
               </tr>
               <tr>
@@ -331,7 +332,7 @@ export default function RightSection(props) {
                   Message
                 </td>
                 <td style={{ border: "1px solid black", padding: "8px" }}>
-                  {formData.message}
+                  {formData?.message || ""}
                 </td>
               </tr>
               <tr>
@@ -345,7 +346,7 @@ export default function RightSection(props) {
                   Date
                 </td>
                 <td style={{ border: "1px solid black", padding: "8px" }}>
-                  {dateString != null ? dateString : ""}
+                  {dateString ? dateString : ""}
                 </td>
               </tr>
             </tbody>
@@ -407,7 +408,7 @@ export default function RightSection(props) {
             <div className="flex">
               <button
                 name="form"
-                className=" w-[35px] border-[1px] text-[14px] border-solid border-[#F60] bg-[#807d7aac] font-medium font-roboto text-white"
+                className="w-[40px] border-[1px] text-[14px] border-solid border-[#F60] bg-[#807d7aac] font-medium font-roboto text-white"
               >
                 {ipdata != null && ipdata != undefined
                   ? ipdata.country_code

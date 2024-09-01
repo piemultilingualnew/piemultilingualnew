@@ -1,10 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import qs from "qs";
+import { fetchInner3Data } from "./inner3Actions";
 
 export const fetchLearningData = createAsyncThunk(
   "learning/fetchData",
-  async (searchurl, { rejectWithValue }) => {
+  async (searchurl, { rejectWithValue, dispatch }) => {
     let parts = searchurl.split("/");
     const partssec = parts[1] ? parts[1].split("?") : [""];
     const querytwo = qs.stringify(
@@ -13,7 +14,9 @@ export const fetchLearningData = createAsyncThunk(
           $or: [
             {
               page_url: {
-                $eq: partssec[0],
+                // $eq: partssec[0],
+                $eq: parts[2],
+
               },
             },
           ],
@@ -54,7 +57,9 @@ export const fetchLearningData = createAsyncThunk(
           api: "learning",
         };
       }
-      return rejectWithValue(error.response.data);
+      else {
+        dispatch(fetchInner3Data(searchurl));
+      }
     } catch (error) {
       return rejectWithValue(error.response.data);
     }

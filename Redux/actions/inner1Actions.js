@@ -1,11 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import qs from "qs";
+import { fetchLearningData } from "./learningActions";
+import { fetchInner3Data } from "./inner3Actions";
 
 // Define async thunk for fetching API data
 export const fetchInner1Data = createAsyncThunk(
   "api/fetchApiData",
-  async (searchurl, { rejectWithValue }) => {
+  async (searchurl, { rejectWithValue, dispatch }) => {
     const query = qs.stringify(
       {
         filters: {
@@ -66,11 +68,13 @@ export const fetchInner1Data = createAsyncThunk(
           return {
             ...response.data.data[0].attributes,
             id: response.data.data[0].id,
-            api: "inner 1",
+            api: "website",
           };
         }
       }
-      return rejectWithValue(error.response.data);
+      else {
+        dispatch(fetchInner3Data(searchurl));
+      }
     } catch (error) {
       return rejectWithValue(error.response.data);
     }

@@ -8,6 +8,7 @@ import parse from "html-react-parser";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchContactData } from "@/Redux/actions/contactActions";
 import { useEffect } from "react";
+
 const TrustBox = dynamic(() => import("./TrustBox"), {
   loading: () => <div className="w-full min-h-[400px]">Loading</div>,
 });
@@ -29,8 +30,7 @@ const Contact = () => {
         <div className="main-container h-[300px] flex relative bg-white justify-center z-20 items-center">
           <span className="loading loading-ring loading-lg text-[#F60]"></span>
         </div>
-        <div className="sticky h-[520px] w-[100%] z-0 bottom-[0px]">
-        </div>
+        <div className="sticky h-[520px] w-[100%] z-0 bottom-[0px]"></div>
       </div>
     );
   }

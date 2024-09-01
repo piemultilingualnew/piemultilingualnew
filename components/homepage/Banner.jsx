@@ -1,17 +1,18 @@
-import Image from "next/image"
-import RightSection from "../foreign-language-services/language-translation/content/RightSection"
+import Image from "next/image";
+import RightSection from "../foreign-language-services/language-translation/content/RightSection";
+import Slider from "../parts/slider";
 
-const Banner = () => {
+const Banner = (props) => {
   return (
-    <div className='w-full h-[540px] relative'>
-        <div className="w-full absolute top-0 flex h-full">
-            <Image src='/imgs/cover.png' alt="" className="w-full object-cover" sizes="100vw" priority fill/>
+    <div className="w-full md:h-[540px] bg-[url('/imgs/cover.png')] bg-cover bg-center lg-px-10 xl:px-0 px-5">
+      <div className="max-w-[1250px] h-full mx-auto flex flex-col md:flex-row justify-between items-center">
+        <Slider tabs={props.slider} />
+        <div className="w-full md:w-[319px] pb-5 sm:pb-0">
+          <RightSection />
         </div>
-        <div className="w-[319px] absolute right-[10px] top-[30px]">
-            <RightSection />
-        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Banner
+export default Banner;

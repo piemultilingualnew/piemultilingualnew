@@ -4,6 +4,7 @@ const initialState = {
   isVisible: false,
 };
 
+
 export const editSlice = createSlice({
   name: 'edit',
   initialState,
@@ -22,6 +23,7 @@ export const editSlice = createSlice({
       state.isVisible = true;
       if (typeof window !== 'undefined') {
         localStorage.setItem('showBlock', 'true');
+        console.log("local storage");
       }
     },
   },
@@ -34,6 +36,7 @@ export const editSlice = createSlice({
     });
   },
 });
+
 
 export const { isVisible, setIsVisible, toggleBlock, toggleEdit } = editSlice.actions;
 export const selectIsVisible = (state) => state.edit.isVisible;

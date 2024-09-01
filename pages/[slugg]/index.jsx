@@ -1,11 +1,12 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import dynamic from "next/dynamic";
 import { resetInner1 } from "@/Redux/features/innner1Slice";
 import { resetInner3 } from "@/Redux/features/inner3Slice";
 import { resetLearning } from "@/Redux/features/learningSlice";
+import { resetAbout } from "@/Redux/features/aboutSlice";
 
 const Banner = dynamic(() => import("@/components/home/banner/Banner"), {
   loading: () => <div className="w-full min-h-screen">Loading</div>,
@@ -189,11 +190,13 @@ const Index = () => {
 
         dispatch(resetInner1());
         dispatch(resetInner3());
-        dispatch(resetLearning());
+        // dispatch(resetLearning());
+        // dispatch(resetAbout());
 
-        await Promise.all([dispatch(fetchInner1Data(searchurl))]);
-        await Promise.all([dispatch(fetchInner3Data(searchurl))]);
-        await Promise.all([dispatch(fetchLearningData(searchurl))]);
+
+        dispatch(fetchInner1Data(searchurl));
+        // await Promise.all([dispatch(fetchLearningData(searchurl))]);
+        // await Promise.all([dispatch(fetchInner3Data(searchurl))]);
       }
     };
 
@@ -211,22 +214,14 @@ const Index = () => {
     );
   }
 
+  if (errorInner3==="error") {
+    console.log("error Inner 3 true..............!!!!!!!!!!!!");
+  }
+
   return (
     <>
       <div className="main-container ">
-        {learningData != null && learningData != undefined ? (
-          <div>
-            <DynamicLearningBanner data={learningData}></DynamicLearningBanner>
-            <DynamicCounters data={learningData.number_box}></DynamicCounters>
-            <div className="flex pt-[30px] pb-[50px] flex-col justify-center items-center">
-              <DynamicService data={learningData.service}></DynamicService>
-              <DynamicAboutme></DynamicAboutme>
-              <IndustriesChoose></IndustriesChoose>
-              <DynamicHappyClient></DynamicHappyClient>
-            </div>
-            <DynamicFooter></DynamicFooter>
-          </div>
-        ) : inner1Data != null && inner1Data != undefined ? (
+        {inner1Data != null && inner1Data != undefined ? (
           <div>
             {inner1Data.herobox && <Banner apiData={inner1Data} />}
             {inner1Data.videosection != null &&
@@ -312,7 +307,7 @@ const Index = () => {
               <DynamicSection data={inner3Data}></DynamicSection>
             </div>
           </>
-        ) : errorInner1 && errorLearning && errorInner3 ? (
+        ) : errorInner3==="error" ? (
           <>
             <NotFound />
           </>

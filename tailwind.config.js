@@ -25,18 +25,30 @@ module.exports = {
         
         'roboto': ['var(--font-roboto)'],
         'fira-sans':['var(--font-fira)'],
-        'inter':['Inter', 'sans-serif']
+        'inter':['Inter', 'sans-serif'],
+        'nunito': ['var(--font-nunito)'],
+        'sancoale': ['Sancoale', 'sans-serif'],
       },
       keyframes: {
         fadeOut: {
           '0%': { opacity: 1 },
           '90%': {opacity: 1},
           '100%': { opacity: 0 },
-        }
+        },
+        slideIn: {
+          '0%': { transform: 'translateX(-100%)', opacity: 0 },
+          '100%': { transform: 'translateX(0)', opacity: 1 },
+        },
+        slideOut: {
+          '0%': { transform: 'translateX(0)', opacity: 1 },
+          '100%': { transform: 'translateX(-100%)', opacity: 0 },
+        },
       },
       animation: {
         'bounce-slow': 'bounce 2s ease infinite',
-        'fade-out': 'fadeOut 6s linear infinite'
+        'fade-out': 'fadeOut 6s linear infinite',
+        slideIn: 'slideIn 1s ease-in-out forwards',
+        slideOut: 'slideOut 0.5s ease-in-out forwards',
       }
     },
   },

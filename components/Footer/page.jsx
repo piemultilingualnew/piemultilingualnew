@@ -7,7 +7,8 @@ import { fetchFooterData } from "@/Redux/actions/footerActions";
 export default function Footer() {
   const dispatch = useDispatch();
   const { footerData, loading, error } = useSelector((state) => state.footer);
-  const { ipData } = useSelector((state) => state.ip);
+  const { ipInfo } = useSelector((state) => state.ip);
+  const ipData = ipInfo;
   const navigate = useRouter();
   const { rh } = navigate.query;
   const [formData, setFormData] = useState({
@@ -84,7 +85,7 @@ export default function Footer() {
       alert(error);
     }
   };
-//   const { footerData } = useSharedData();
+  //   const { footerData } = useSharedData();
   const bottomLinks = [
     {
       icon: "flaticon-house",
@@ -134,7 +135,9 @@ export default function Footer() {
   const data = footerData != null ? footerData.footer : "";
   const currentYear = new Date().getFullYear();
   return data != null ? (
-    <div className="bg-[#434146]">
+    <div
+      className="bg-[#434146]"
+    >
       <div className=" sm:h-[450px] flex justify-between">
         {rh == null ? (
           <div className="w-[90px] h-[520px] mt-[200px] z-30 relative top-[70px] bg-[#30B1C0] flex self-end rounded-tr-[150px]">

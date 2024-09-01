@@ -13,6 +13,31 @@
   }
 }
 
+@font-face {
+  font-family: 'Sancoale';
+  src: url('/fonts/sancoale/Sancoale_Softened_Medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.myFont {
+  font-family: Sancoale !important;
+  font-size: 36px;
+  font-weight: normal;
+}
+
+.group-btn:hover .flaticon-right-arrow-angle {
+  color: white;
+}
+
+@media (max-width: 1144px) {
+  .advantage {
+    height: 460px !important;
+  }
+}
+
+
+
 :root {
   font-family: var(--font-roboto);
 }
@@ -20,7 +45,9 @@ body{
   background-color: #FFF;
   color: #333;
 }
-
+html, body {
+  overflow-x: hidden;
+}
 img{
   pointer-events: none;
 }
@@ -111,6 +138,41 @@ i {
   background-repeat: no-repeat;
   background-position: 2px 4px;
   /* z-index: 50; */
+}
+
+@media (max-width: '1100px') {
+  .faq {
+    flex-direction: column !important;
+  }
+}
+
+@media (min-width: 1100px) and (max-width: 1284px) {
+  .dropDown {
+    position: relative;
+    right: 3rem;
+  }
+}
+
+
+.hmImg {
+  background: url('/imgs/hexa.png') !important;
+  display: block;
+  unicode-bidi: isolate;
+  width: 150px;
+  height: 150px;
+  float: left;
+  background-size: cover;
+  text-align: center;
+  padding-top: 25px;
+  margin-right: 20px;
+}
+
+@media screen and (max-width: 1023px) {
+  .hmImg {
+      float: unset;
+      margin: 0 auto;
+      color: #fff;
+  }
 }
 
 .arrow {
@@ -626,9 +688,10 @@ i {
   // background: red;
 }
 
+
 .boxarrowthree {
   position: relative;
-  padding: 10px 20px;
+  padding: 8px 20px;
   color: #fff;
   box-sizing: border-box;
   max-width: 390px;
@@ -669,12 +732,12 @@ i {
 }
 
 .boxarrowthree:hover:after {
-  background: #EDAE49;
+  background: rgb(131, 131, 255);
   transition-duration: 300ms;
 }
 
 .boxarrowthree:hover {
-  background: #EDAE49;
+  background: rgb(131, 131, 255);
   transition-duration: 300ms;
 
 }

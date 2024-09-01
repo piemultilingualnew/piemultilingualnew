@@ -3,8 +3,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 export default function Last() {
-  const router = useRouter();
-  const dispatch = useDispatch();
   const { caseData, loadingCase, errorCase } = useSelector(
     (state) => state.caseStudy
   );
@@ -27,6 +25,7 @@ export default function Last() {
       : null;
   const [text, setText] = useState("");
   useEffect(() => {
+    console.log("above footer: ", data);
     let textt =
       data?.Above_Footer?.content != null ? data.Above_Footer.content : "";
     textt = textt.replace(
@@ -79,16 +78,16 @@ export default function Last() {
     setText(textt);
   }, [data]);
   return (
-    <div className="w-full flex flex-col  relative">
+    <div className="w-full flex flex-col relative">
       {data?.Above_Footer?.content != null ? (
         <div
-          className=" z-[10]  overflow-hidden relative w-full bg-gray-300 bg-contain bggreengrad filter flex  items-center"
+          className="z-[10] overflow-hidden relative w-full bg-gray-300 bg-contain filter flex items-center bg-[url('/imgs/bokeh-orange2.jpg')] bg-cover bg-center"
           style={{
             height: data.Above_Footer.last[0] != null ? "414px" : "350px",
           }}
         >
           <div
-            className=" flex "
+            className="flex"
             style={{
               height: data.Above_Footer.last[0] != null ? "414px" : "300px",
             }}
@@ -100,9 +99,9 @@ export default function Last() {
             <div className="h-[150px] w-[1px] relative left-[1200px] star3 bg-white "></div>
             <div className="h-[110px] w-[1px] relative left-[100px] star2 bg-white "></div>
           </div>
-          <div className="w-[100%] h-full flex flex-col gap-[20px] justify-center items-center ">
+          <div className="w-[100%] h-full flex flex-col gap-[20px] justify-center items-center">
             <p
-              className=" font-fira-sans font-normal  text-[#FFF]  text-center"
+              className="myFont text-[#FFF] text-center"
               style={{
                 fontSize: data.Above_Footer.last[0] != null ? "40px" : "35px",
                 width: data.Above_Footer.last[0] != null ? "881px" : "",
@@ -110,33 +109,29 @@ export default function Last() {
               dangerouslySetInnerHTML={{ __html: text }}
             ></p>
             <Link
-              href={`/${data.Above_Footer.url}`}
+              href={`/landing/${data.Above_Footer.url}`}
               name="last"
-              className="  font-bold text-[16px] mt-[0px] rounded-[4px] p-2 uppercase border-solid border-[2px] border-[#FFF] text-[#FFF] hover:bg-[rgb(75,168,137)] hover:scale-105 ease-in-out transition-transform whitespace-nowrap"
+              className="!text-[20px] mt-[0px] rounded-[4px] p-2 uppercase border-solid border-[2px] border-[#FFF] text-[#FFF] hover:bg-white/30 hover:scale-105 ease-in-out transition-transform whitespace-nowrap myFont"
             >
               {data.Above_Footer.button}
             </Link>
           </div>
           {data?.Above_Footer?.last != null &&
           data?.Above_Footer?.last.length > 0 ? (
-            <div className="flex flex-col justify-center items-center h-full  border-l-[1px] border-0 border-[#fff] bgbluegrad w-[40%] bg-blue-300">
+            <div className="myFont flex flex-col justify-center items-center h-full border-l-[1px] border-0 border-[#fff] w-[40%] bg-gray-600/20 backdrop-blur-md">
               <div className="flex flex-col gap-[30px]">
                 {data.Above_Footer.last.map((e, i) => {
                   return (
                     <div className="flex flex-col my-[15px]" key={i}>
                       <div className="flex flex-col h-[70px]">
-                        <div className="icon flex items-center gap-[10px] ">
+                        <div className="icon flex items-center gap-[10px]">
                           <i
                             className={`${e.icon} text-[30px] text-[white]`}
                           ></i>
-                          <p className="text-[40px] font-roboto font-bold text-[#FFF]">
-                            {e.heading}
-                          </p>
+                          <p className="text-[40px] text-[#FFF]">{e.heading}</p>
                         </div>
 
-                        <p className="text-[18px] font-roboto font-semibold text-[#FFF]">
-                          {e.content}
-                        </p>
+                        <p className="text-[25px] text-[#FFF]">{e.content}</p>
                       </div>
                     </div>
                   );

@@ -9,7 +9,8 @@ import { useSelector } from 'react-redux';
 const Contact = ({calculator, apiData, apiData2}) => {
   const [text, setText] = useState("");
   
-  const {ipData} = useSelector((state) => state.ip);
+  const {ipInfo} = useSelector((state) => state.ip);
+  const ipData = ipInfo;
   const [uploadbutton, setUploadbutton] = useState(false)
   const [namewarn, setNamewarn] = useState(false);
   const [phonewarn, setPhonewarn] = useState(false);

@@ -17,6 +17,9 @@ export const inner2Slice = createSlice({
   initialState,
   reducers: {
     resetInner2: () => initialState,
+    setErrorInner2: (state, action) => {
+      state.errorInner2 = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -36,4 +39,4 @@ export const inner2Slice = createSlice({
   },
 });
 
-export const { innner2Data, loadingInner2, errorInner2, resetInner2 } = inner2Slice.actions;
+export const { innner2Data, loadingInner2, errorInner2, resetInner2, setErrorInner2 } = inner2Slice.actions;

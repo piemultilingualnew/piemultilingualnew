@@ -28,10 +28,11 @@ export const fetchBlogData = createAsyncThunk(
 export const fetchBlogDetail = createAsyncThunk(
   "blog/fetchBlogDetail",
   async (searchurl, { rejectWithValue }) => {
-    // console.log("blog search url: ", searchurl);
+    if (searchurl === "/blog/[slug]") {
+      return null;
+    }
     let parts = searchurl.split("/");
     const searchurltwo = parts[2];
-    console.log("blog url: ", searchurltwo);
     try {
       const queryblogdetail = qs.stringify(
         {
@@ -67,7 +68,12 @@ export const fetchBlogDetail = createAsyncThunk(
           ? response.data.data[0]?.attributes
           : null;
 
-          console.log("blog detail: ", data);
+      if (data) {
+        return data;
+      } else {
+        return rejectWithValue("error");
+      }
+
       return data;
     } catch (error) {
       return rejectWithValue(error.response?.data || error.message);

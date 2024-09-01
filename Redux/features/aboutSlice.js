@@ -13,7 +13,9 @@ const initialState = {
 export const aboutSlice = createSlice({
   name: "aboutDataa",
   initialState,
-  reducers: {},
+  reducers: {
+    resetAbout: () => initialState,
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchAboutData.pending, (state) => {
@@ -32,4 +34,4 @@ export const aboutSlice = createSlice({
   },
 });
 
-export const { aboutData, loadingAbout, errorAbout } = aboutSlice.actions;
+export const { aboutData, loadingAbout, errorAbout, resetAbout } = aboutSlice.actions;

@@ -1,18 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchBlogData, fetchBlogDetail } from "../actions/blogActions";
 
+const initialState = {
+  blogData: null,
+  blogDetail: null,
+  loadingBlog: false,
+  errorBlog: false,
+  loadingBlogDetail: false,
+  errorBlogDetail: false,
+};
 
 export const blogSlice = createSlice({
   name: "blog",
-  initialState: {
-    blogData: null,
-    blogDetail: null,
-    loadingBlog: false,
-    errorBlog: false,
-    loadingBlogDetail: false,
-    errorBlogDetail: false,
+  initialState: initialState,
+  reducers: {
+    resetBlog: () => initialState,
   },
-  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchBlogData.pending, (state) => {
@@ -44,4 +47,4 @@ export const blogSlice = createSlice({
   },
 });
 
-export const { blogData, blogDetail, loadingBlog, loadingBlogDetail, errorBlog, errorBlogDetail } =  blogSlice.actions;
+export const { blogData, blogDetail, loadingBlog, loadingBlogDetail, errorBlog, errorBlogDetail, resetBlog } =  blogSlice.actions;

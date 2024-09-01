@@ -46,6 +46,7 @@ const Index = () => {
     (state) => state.inner3
   );
 
+
   useEffect(() => {
     const fetching = async () => {
       const { fetchInner3Data } = await import("@/Redux/actions/inner3Actions");
@@ -68,8 +69,7 @@ const Index = () => {
         <div className="main-container h-[300px] flex relative bg-white justify-center z-20 items-center">
           <span className="loading loading-ring loading-lg text-[#F60]"></span>
         </div>
-        <div className="sticky h-[520px] w-[100%] z-0 bottom-[0px]">
-        </div>
+        <div className="sticky h-[520px] w-[100%] z-0 bottom-[0px]"></div>
       </div>
     );
   }

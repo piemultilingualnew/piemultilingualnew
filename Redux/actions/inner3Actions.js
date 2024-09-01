@@ -2,11 +2,15 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import qs from "qs";
+import { fetchHireData } from "./hireActions";
+import { setErrorHire } from "../features/hireSlice";
+import { setErrorInner2 } from "../features/inner2Slice";
+import { setErrorInner3 } from "../features/inner3Slice";
 
 // Define the async thunk for fetching data
 export const fetchInner3Data = createAsyncThunk(
   "apiInner/fetchApiDataInner",
-  async (searchurl, { rejectWithValue }) => {
+  async (searchurl, { rejectWithValue, dispatch }) => {
     const searchurlWithSlash = searchurl + "/";
     const query = qs.stringify(
       {
@@ -69,13 +73,17 @@ export const fetchInner3Data = createAsyncThunk(
     const url = `${process.env.NEXT_PUBLIC_mainurl}/api/inner3s?${query}`;
 
     try {
+      if (searchurl === "/[slugg]/[slug2" || searchurl === "/[slugg") {
+        return rejectWithValue("Data is undefined");
+      }
       const response = await axios.get(url, {
         headers: { "Content-Type": "application/json" },
       });
+
       const data = response.data.data[0];
 
-      if (
-        data &&
+      if ( data && 
+        data.attributes &&
         (data.attributes.page_url === searchurl ||
           data.attributes.page_url === searchurlWithSlash)
       ) {
@@ -84,11 +92,15 @@ export const fetchInner3Data = createAsyncThunk(
           ...data.attributes,
           api: "inner3",
         };
+      } else {
+        return rejectWithValue("error");
       }
-      
-      return rejectWithValue("no data found");
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
   }
 );
+
+// dispatch(setErrorHire(true));
+// dispatch(setErrorInner2(true));
+// dispatch(setErrorInner3("error"));
